@@ -13,7 +13,7 @@ typedef void SocketHandler(void *data, int mask);
 #define SOCKET_EXCEPTION 1 << 2
 
     virtual void setSocketHandling(int socknum, int mask, SocketHandler *handlerProc, void *data) = 0;
-    virtual void disableSocketHandling(int socknum) { setSocketHandling(socknum, 0, NULL, NULL);}
+    virtual void disableSocketHandling(int socknum) { setSocketHandling(socknum, 0, nullptr, nullptr); }
 
 };
 
