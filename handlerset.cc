@@ -19,6 +19,12 @@ HandlerDescriptor::HandlerDescriptor(HandlerDescriptor *nextHanderDes)
     }
 }
 
+HandlerDescriptor::~HandlerDescriptor()
+{
+    pPrevHandler->pNextHandler = pNextHandler;
+    pNextHandler->pPrevHandler = pPrevHandler;
+}
+
 
 
 
@@ -26,6 +32,14 @@ MyHandlerSet::MyHandlerSet()
     :HandlerDesHead(&HandlerDesHead)//// pNextHanler = pPrevHandler = this;
 {
     cout << "finish MyHandlerSet::MyHandlerSet()" << endl;
+}
+
+MyHandlerSet::~MyHandlerSet()
+{
+    while (HandlerDesHead.pNextHandler != &HandlerDesHead) {
+        delete HandlerDesHead.pNextHandler;
+        cout << "delete a item of list" << endl;
+    }
 }
 
 HandlerDescriptor *MyHandlerSet::lookupHandler(int sockNum)
@@ -72,15 +86,20 @@ void MyHandlerSet::clearHandler(int num)
 
 
 
-void MyHandlerIterator::reset()
-{
-    nextPtr = mySet.HandlerDesHead.pNextHandler;
-}
-
 MyHandlerIterator::MyHandlerIterator(MyHandlerSet &set)
     :mySet(set) //// here not copy constructor, because mySet is a reference of MyHandlerSet
 {
     reset();
+}
+
+MyHandlerIterator::~MyHandlerIterator()
+{
+    cout << "MyHandlerIterator deconstructor begin" << endl;
+}
+
+void MyHandlerIterator::reset()
+{
+    nextPtr = mySet.HandlerDesHead.pNextHandler;
 }
 
 HandlerDescriptor *MyHandlerIterator::next()

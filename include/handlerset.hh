@@ -9,7 +9,7 @@ class HandlerDescriptor {
 
 private:
     HandlerDescriptor(HandlerDescriptor *nextHanderDes);
-    ~HandlerDescriptor();
+    virtual ~HandlerDescriptor();
 private:
     int socketNum;
     int conditionSet;
@@ -27,6 +27,7 @@ class MyHandlerSet {
 
 public:
     MyHandlerSet();
+    virtual ~MyHandlerSet();
     void assignHandler(int num, int set, MyTaskScheduler::SocketHandler *handler, void *data);
     void clearHandler(int num);
 
@@ -44,6 +45,7 @@ private:
 class MyHandlerIterator {
 public:
     MyHandlerIterator(MyHandlerSet &set);//temp
+    virtual ~MyHandlerIterator();
     HandlerDescriptor *next();
 
 private:
