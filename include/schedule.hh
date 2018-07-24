@@ -3,7 +3,7 @@
 
 class MyTaskScheduler {
 public:
-
+    virtual ~MyTaskScheduler() { std::cout << "deinit MyTaskScheduler finished" << std::endl;}; ////virtual function can be inline ?
     /** main loop **/
     virtual void doEventLoop() = 0;//// temp set parameter void
 
