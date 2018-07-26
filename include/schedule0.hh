@@ -5,5 +5,5 @@ public:
     virtual ~MyTaskScheduler0();
 
 private:
-    class MyHandlerSet *pHandlerSet;
+    class MyHandlerSet *pHandlerSet;////private or protected, neeed to consider
 };

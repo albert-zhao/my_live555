@@ -1,5 +1,6 @@
 #ifndef _SCHEDULE_HH
 #define _SCHEDULE_HH
+#include <iostream>
 
 class MyTaskScheduler {
 public:
