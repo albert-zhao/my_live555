@@ -1,3 +1,5 @@
+#ifndef _SCHEDULE0_HH
+#define _SCHEDULE0_HH
 #include "schedule.hh"
 #include "handlerset.hh"
 #include "delayqueue.h"
@@ -21,4 +23,6 @@ protected:
 
 class AlarmHandler: public DelayQueueEntry {
 
-}
+};
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef _DELAY_QUEUE_H
+#define _DELAY_QUEUE_H
 /** abstract class, so constructor is protected for subclass invoking it **/
 class DelayQueueEntry {
 public:
@@ -17,3 +19,4 @@ public:
     void addEntry(DelayQueueEntry *newEntry);
     void removeEntry(DelayQueueEntry *newEntry);
 };
+#endif
