@@ -1,9 +1,12 @@
 #include "schedule.hh"
+#include "handlerset.hh"
 class MyTaskScheduler0: public MyTaskScheduler{
 public:
-    MyTaskScheduler0();
     virtual ~MyTaskScheduler0();
 
+protected:
+    MyTaskScheduler0();////stop current class from instantiating it, subclass using it
+
 private:
-    class MyHandlerSet *pHandlerSet;
+    MyHandlerSet *pHandlerSet;
 };
