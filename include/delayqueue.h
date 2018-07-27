@@ -1,5 +1,11 @@
 #ifndef _DELAY_QUEUE_H
 #define _DELAY_QUEUE_H
+
+class DelayInterval
+{
+
+};
+
 /** abstract class, so constructor is protected for subclass invoking it **/
 class DelayQueueEntry {
 public:
