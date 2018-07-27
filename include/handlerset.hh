@@ -45,7 +45,7 @@ private:
 class MyHandlerIterator {
 public:
     MyHandlerIterator(MyHandlerSet &set);//temp
-    virtual ~MyHandlerIterator();
+    virtual ~MyHandlerIterator(); //// in case subclass inheriting it
     HandlerDescriptor *next();
 
 private:

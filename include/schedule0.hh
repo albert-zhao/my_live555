@@ -8,5 +8,5 @@ protected:
     MyTaskScheduler0();////stop current class from instantiating it, subclass using it
 
 private:
-    MyHandlerSet *pHandlerSet;
+    MyHandlerSet *pHandlerSet;////private or protected, neeed to consider
 };
