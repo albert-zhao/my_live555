@@ -1,24 +1,37 @@
 #include "delayqueue.hh"
+#include <iostream>
+
+
+
 
 #define ZEROINTERVAl
+using namespace std;
 
 
 
 
+/** DelayQueueEntry **/
 DelayQueueEntry::DelayQueueEntry(DelayTimeVal delay)
     : delayDeltaTime(delay)
 {
     pNext = pPrev = this;
 }
 
+DelayQueueEntry::~DelayQueueEntry()
+{
+    /** how to deal with  DelayTimeVal delayDeltaTime **/
+    cout << "deinit DelayQueueEntry" << endl;
+}
+
 void DelayQueueEntry::handleTimeOut()
 {
-    delete this;//// ? delete what?
+    delete this;//// ? delete what? virtual function, call subclass deconstructor
 }
 
 
 
 
+/** DelayQueue **/
 void DelayQueue::synchronizeTime()
 {
     struct timeval now;

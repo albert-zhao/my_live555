@@ -1,6 +1,13 @@
 #include "schedule0.hh"
+
+
+
+
 using namespace std;
 
+
+
+/** MyTaskScheduler0 **/
 MyTaskScheduler0::MyTaskScheduler0()
 {
     pHandlerSet = new MyHandlerSet();
@@ -15,6 +22,12 @@ MyTaskScheduler0::~MyTaskScheduler0()
 
 
 
+
+/**  AlarmHandler **/
+AlarmHandler::~AlarmHandler()
+{
+    cout << "deinit AlarmHandler" << endl;
+}
 
 void AlarmHandler::handleTimeOut()
 {

@@ -9,6 +9,7 @@ class DelayTimeVal: public TimeVal {
 class DelayQueueEntry {
     friend class Delayqueue; 
 public:
+    virtual ~DelayQueueEntry();//// must be virtual, so u can use baseclass deconstructor to call subclass deconstructor
     virtual void handleTimeOut();
 
 protected:
