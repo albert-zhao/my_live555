@@ -3,7 +3,7 @@
 
 class DelayInterval
 {
-
+/** copy assign -= >= constructor **/
 };
 
 /** abstract class, so constructor is protected for subclass invoking it **/
