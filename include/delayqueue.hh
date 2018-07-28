@@ -1,9 +1,8 @@
 #ifndef _DELAY_QUEUE_HH
 #define _DELAY_QUEUE_HH
 
-class DelayInterval
-{
-/** copy assign -= >= constructor **/
+class DelayTimeVal: public TimeVal {
+
 };
 
 /** abstract class, so constructor is protected for subclass invoking it **/
@@ -13,12 +12,12 @@ public:
     virtual void handleTimeOut();
 
 protected:
-    DelayQueueEntry(DelayInterval delay);
+    DelayQueueEntry(DelayTimeVal delay);
 
 private://// if defined protected, may only can access the Delayqueueentry of the Delayqueue, then others can not access
     DelayQueueEntry *pNext;
     DelayQueueEntry *pPrev;
-    DelayInterval delayDeltaTime;
+    DelayTimeVal delayDeltaTime;
 };
 
 class DelayQueue: public DelayQueueEntry {
@@ -27,7 +26,7 @@ public:
     void removeEntry(DelayQueueEntry *newEntry);
 
 private:
-    DelayInterval syncTime;
+    DelayTimeVal syncTime;
     void synchronizeTime();
 
 };
