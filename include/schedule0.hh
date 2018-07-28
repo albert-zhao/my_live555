@@ -22,7 +22,8 @@ protected:
 
 
 class AlarmHandler: public DelayQueueEntry {
-
+public:
+    virtual void handleTimeOut();
 };
 
 #endif

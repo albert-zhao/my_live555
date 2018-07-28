@@ -12,3 +12,12 @@ MyTaskScheduler0::~MyTaskScheduler0()
     cout << "deinit MyTaskScheduler0 finished" << endl;
     delete pHandlerSet;
 }
+
+
+
+
+void AlarmHandler::handleTimeOut()
+{
+    /** TO DO **/
+    DelayQueueEntry::handleTimeOut();
+}
