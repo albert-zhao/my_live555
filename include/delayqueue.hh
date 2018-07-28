@@ -24,10 +24,14 @@ class DelayQueue: public DelayQueueEntry {
 public:
     void addEntry(DelayQueueEntry *newEntry);
     void removeEntry(DelayQueueEntry *newEntry);
+    void handleAlarm();
 
 private:
-    DelayTimeVal syncTime;
     void synchronizeTime();
+    DelayQueueEntry * head() { return pNext; }
+
+private:
+    DelayTimeVal lastSyncTime;
 
 };
 #endif

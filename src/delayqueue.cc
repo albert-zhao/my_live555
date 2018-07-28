@@ -1,26 +1,39 @@
 #include "delayqueue.hh"
 
+#define ZEROINTERVAl
+
+
+
+
 DelayQueueEntry::DelayQueueEntry(DelayTimeVal delay)
     : delayDeltaTime(delay)
 {
     pNext = pPrev = this;
 }
 
+void DelayQueueEntry::handleTimeOut()
+{
+    delete this;//// ? delete what?
+}
+
+
+
 
 void DelayQueue::synchronizeTime()
 {
     struct timeval now;
     DelayTimeVal syncInterval;
-    DelayQueueEntry *next = pNext;
+    DelayQueueEntry *next = head();
 
-    gettimeofday(&now, NULL);
+    gettimeofday(&now, NULL);//// ? need to deal return value
 
-    if (DelayTimeVal(&now) < syncTime) {
-        syncTime = DelayTimeVal(&now);
+    if (DelayTimeVal(&now) < lastSyncTime) {
+        lastSyncTime = DelayTimeVal(&now);
         return;
     }
 
-    syncInterval = DelayTimeVal(&now) - syncTime;
+    syncInterval = DelayTimeVal(&now) - lastSyncTime;
+    lastSyncTime = DelayTimeVal(&now);
 
     while ((next != this) && (syncInterval >= next->delayDeltaTime)) {
         syncInterval -= next->delayDeltaTime;
@@ -34,11 +47,10 @@ void DelayQueue::synchronizeTime()
 
 }
 
-
 void DelayQueue::addEntry(DelayQueueEntry *newEntry)
 {
     DelayTimeVal syncInterval;
-    DelayQueueEntry *next = pNext;
+    DelayQueueEntry *next = head();
 
     if (!newEntry) {
         cout << "newEntry is nullptr" << endl;
@@ -88,4 +100,17 @@ void DelayQueue::removeEntry(DelayQueueEntry *newEntry)
     newEntry->pNext = newEntry;
 
     return;
+}
+
+ void DelayQueue::handleAlarm() //// process one event every time
+{
+    if (head()->delayDeltaTime != ZEROINTERVAL) {
+        synchronizeTime();
+    }
+
+    if (head()->delayDeltaTime == ZEROINTERVAl) {
+        DelayQueueEntry *toRemove = head();
+        removeEntry(toRemove);
+        toRemove->handleTimeOut();
+    }
 }
