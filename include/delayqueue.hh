@@ -1,7 +1,18 @@
 #ifndef _DELAY_QUEUE_HH
 #define _DELAY_QUEUE_HH
+#include "timevalue.hh"
+using namespace std;
 
 class DelayTimeVal: public TimeVal {
+public:
+    DelayTimeVal(struct timeval *t)
+        :TimeVal(t)
+    { 
+        cout << "DelayTimeVal(struct timeval *t) init" << endl;
+    }
+
+    /** =, - need to deal **/
+    DelayTimeVal & operator=(const DelayTimeVal &delaytv);
 
 };
 

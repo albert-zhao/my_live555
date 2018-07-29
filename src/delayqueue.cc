@@ -10,6 +10,18 @@ using namespace std;
 
 
 
+/** DelayTimeVal **/
+/**need to test **/
+DelayTimeVal & operator=(const DelayTimeVal &delaytv)
+{
+    TimeVal &tmp = delaytv;
+    *this = tmp;
+    return *this;
+}
+
+
+
+
 /** DelayQueueEntry **/
 DelayQueueEntry::DelayQueueEntry(DelayTimeVal delay)
     : delayDeltaTime(delay)

@@ -16,7 +16,7 @@ protected:
      * friend class function and defining class functions to manipulate it
      * , just need subclass to inherit it
      */
-    MyHandlerSet *pHandlerSet;////private or protected, neeed to consider
+    MyHandlerSet *pHandlerSet;////private or protected, neeed to consider?
     int lastHandledSocketNum;
 };
 
