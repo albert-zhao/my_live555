@@ -26,9 +26,12 @@ void Handler::handleTimeOut()
     DelayQueueEntry::handleTimeOut();
 }
 
+/** 全局类变量的初始化发生在主函数之前 **/
 int main()
 {
 #if 1
+    cout << "enter main" << endl;
+
     int cnt = 0;
     DelayQueue queue;
     cout << "\n\n...\n\n" << endl;
