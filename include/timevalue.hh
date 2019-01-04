@@ -8,12 +8,20 @@ public:
     TimeVal & operator-=(const TimeVal &val);
     TimeVal & operator+=(const TimeVal &val);
     bool operator>=(const TimeVal &val) const;
+    bool operator<=(const TimeVal &val) const;
     bool operator==(const TimeVal &val) const;
     bool operator!=(const TimeVal &val) const;
+    bool operator<(const TimeVal &val) const;
+    TimeVal operator-(const TimeVal &val) const;
+    void PrintValue();
+    struct timeval getValue() const { return tv; }
+    //TimeVal(const TimeVal &val);
 
-protected:
-    TimeVal(const struct timeval *val);
+public:
+    TimeVal(const struct timeval &val);
     TimeVal(const TimeVal &val);
+    TimeVal(int sec, int usec);
+    TimeVal();
     TimeVal & operator=(const TimeVal &val);
 
 private:
